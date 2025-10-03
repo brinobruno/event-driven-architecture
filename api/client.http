@@ -1,0 +1,29 @@
+POST http://localhost:7878/clients HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "j@j.com"
+}
+
+###
+
+POST http://localhost:7878/accounts HTTP/1.1
+Content-Type: application/json
+
+{
+  "client_id": "4d711f5e-2a2e-4dd7-b164-9935374681bd"
+}
+
+###
+
+POST http://localhost:7878/transactions HTTP/1.1
+Content-Type: application/json
+
+{
+  "account_id_from": "ff12ed85-ad95-45f0-a123-9863492aa9bd",
+  "account_id_to": "84a2a939-ac9e-44df-99ed-29c23de3f9fc",
+  "amount": 1
+}
+
+###
