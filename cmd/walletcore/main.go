@@ -9,6 +9,7 @@ import (
 	"github.com/brinobruno/ms-wallet-core/internal/database"
 	"github.com/brinobruno/ms-wallet-core/internal/event"
 	"github.com/brinobruno/ms-wallet-core/internal/event/handler"
+	"github.com/brinobruno/ms-wallet-core/internal/seed"
 	createaccount "github.com/brinobruno/ms-wallet-core/internal/usecase/create_account"
 	createclient "github.com/brinobruno/ms-wallet-core/internal/usecase/create_client"
 	createtransaction "github.com/brinobruno/ms-wallet-core/internal/usecase/create_transaction"
@@ -79,6 +80,8 @@ func main() {
 	webServer.AddHandler("/clients", clientHandler.CreateClient)
 	webServer.AddHandler("/accounts", accountHandler.CreateAccount)
 	webServer.AddHandler("/transactions", transactionHandler.CreateTransaction)
+
+	seed.Seed(ctx, *createClientUseCase, *createAccountUseCase, *createTransactionUseCase)
 
 	fmt.Println("Server is running on port", port)
 	webServer.Start()
